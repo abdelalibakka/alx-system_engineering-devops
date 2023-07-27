@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-# showng_content of the current dir in a list_format
-# Write a Bash script that displays
-for i in *; do
-	echo "$i" | cut -d '-' -f2
+# Displays the content of the current directory in a list format
+
+for file in *
+do
+	if [[ -f $file && ! ${file:0:1} == "." ]]
+	then
+		name=${file#*-}
+		echo "$name"
+	fi
 done
