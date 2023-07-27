@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#This is used for print Best School 10 times
+
+ii=0
+
+until ((ii==10)); do
+	echo "Best School"
+	((ii++))
+done
