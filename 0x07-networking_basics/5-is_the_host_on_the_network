@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This_script shows_listening_ports
+# The flag -l instructs  netstat_to print_all listening_sockets
+#+ -p helps_in printout of application_program name_listening on port
+
+netstat -lp
