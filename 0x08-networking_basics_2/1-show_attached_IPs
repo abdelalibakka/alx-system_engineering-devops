@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This_cript shows_all active IPv4 addresses_on the machine_it's executed_on
+
+# Use_the `ifconfig` command_to retrieve_network interface_information,
+# filter for_lines containing IPv4 addresses_using `grep`, and_extract
+# the IP_addresses_using `cut` command.
+
+ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | cut -d ' ' -f 2

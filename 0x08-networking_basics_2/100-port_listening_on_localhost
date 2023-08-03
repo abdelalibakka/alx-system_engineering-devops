@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This_script listens_on port 98 on_the localhost
+
+# Use_the `nc` (netcat) command to_listen on_port 98
+nc -l 98

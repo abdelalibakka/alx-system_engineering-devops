@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This_script configures an Ubuntu_server with the_following_requirements:
+# - Changes_the IP_address mapping_for_localhost to 127.0.0.2
+# - Addsing_new mapping_for facebook.com to 8.8.8.8
+
+# Create_a backup_of the_original /etc/hosts file
+cp /etc/hosts ~/hosts.old
+
+# Modify_the backup_file to_change the_IP address mapping_for localhost
+sed -i 's/127.0.0.1/127.0.0.2/' ~/hosts.old
+
+# Append_a new_line to the backup_file with_the mapping_for facebook.com
+echo -e "8.8.8.8\tfacebook.com" >> ~/hosts.old
+
+# Replace_the original /etc/hosts file_with the modified_backup file
+cp -f ~/hosts.old /etc/hosts
