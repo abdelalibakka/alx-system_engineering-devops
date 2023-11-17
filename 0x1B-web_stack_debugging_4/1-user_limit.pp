@@ -1,12 +1,13 @@
-# comments
-file { '/etc/security/limits.conf':
-  content => template('your_module/limits.conf.erb'),
-  notify  => Exec['reload_limits'],
+# Enable the user holberton
+
+# Increase hard file limit
+exec { 'increase-hard-file-limit-for-holberton-user':
+  command => 'sed -i "/holberton hard/s/5/50000/" /etc/security/limits.conf',
+  path    => '/usr/local/bin/:/bin/',
 }
-# comments
-exec { 'reload_limits':
-  command     => 'pkill -HUP -u $USER systemd-logind',
-  path        => '/usr/bin:/bin',
-  refreshonly => true,
-  subscribe   => File['/etc/security/limits.conf'],
+
+# Increase soft file limit
+exec { 'increase-soft-file-limit-for-holberton-user':
+  command => 'sed -i "/holberton soft/s/4/50000/" /etc/security/limits.conf',
+  path    => '/usr/local/bin/:/bin/',
 }
