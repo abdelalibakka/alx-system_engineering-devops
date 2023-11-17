@@ -1,7 +1,7 @@
 # Increase the ULIMIT for Nginx
 file { '/etc/default/nginx':
   ensure  => file,
-  content => template('path/to/nginx_config.erb'),
+  content => 'ulimit -n 4096',
   require => Exec['nginx_config_change'],
 }
 
@@ -13,10 +13,7 @@ exec { 'nginx_config_change':
 
 # Restart Nginx if the configuration has changed
 exec { 'nginx_restart':
-  command => '/etc/init.d/nginx restart',
-  path    => '/etc/init.d/',
+  command     => '/etc/init.d/nginx restart',
+  path        => '/etc/init.d/',
   refreshonly => true,
 }
-
-# Usage of template('path/to/nginx_config.erb') assumes that you have an ERB template
-# at 'path/to/nginx_config.erb' that contains the desired content for the nginx config.
